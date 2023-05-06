@@ -14,8 +14,11 @@ public class Program {
 		EntityManager em = emf.createEntityManager();
 
 		People p = em.find(People.class, 2);
-
-		System.out.println(p);
+		
+		em.getTransaction().begin();
+		em.remove(p);
+		em.getTransaction().commit();
+		
 		System.out.println("Done!");
 
 		em.close();
